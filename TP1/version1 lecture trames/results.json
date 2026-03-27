@@ -1,0 +1,154 @@
+[
+  {
+    "beacon_id": 1,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 1,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 2,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 2,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 3,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 4,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 5,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 6,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 7,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 8,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 9,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 10,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 11,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 12,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 13,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 14,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 15,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 16,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJRGuest",
+    "bssid": "22:11:32:a5:2f:c9",
+    "droneid_id": 17,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "(caché)",
+    "bssid": "16:11:32:a5:2f:c9",
+    "droneid_id": 18,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  },
+  {
+    "beacon_id": 3,
+    "ssid": "CBJR",
+    "bssid": "00:11:32:a5:2f:c9",
+    "droneid_id": 19,
+    "oui": "8c:fd:f0",
+    "subtype": "0x03"
+  }
+]
