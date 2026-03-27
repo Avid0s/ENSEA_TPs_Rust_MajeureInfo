@@ -1,0 +1,24 @@
+// en supposant qu'on commence au millieu de la page :
+
+
+forward 50
+pendown
+right 90
+forward 50
+right 90
+forward 100
+right 90
+forward 100
+right 90
+forward 50
+
+// version loop
+
+forward 50
+pendown
+right 90
+forward 50
+repeat 2 [right 90
+forward 100]
+right 90
+forward 50
