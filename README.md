@@ -8,4 +8,6 @@ Youpi au carré !
 <img width="205" height="24" alt="image" src="https://github.com/user-attachments/assets/6e94a049-b5b2-482f-b1bd-f574259b0421" />\
 ça marche plus
 
+OK c bon ça remarche\
+<img width="223" height="111" alt="image" src="https://github.com/user-attachments/assets/9570cd0c-c612-4a1a-bbac-0b94cfa2832d" />
 
