@@ -1,6 +1,5 @@
 mod lexer;
 mod grammar;
-use crate::grammar::eval;
 
 fn main() {
 
