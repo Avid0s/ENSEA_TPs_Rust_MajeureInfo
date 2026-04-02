@@ -1,0 +1,91 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   0.037559200s  INFO prepare_target{force=false package_id=SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG) target="SVG"}: cargo::core::compiler::fingerprint: fingerprint error for SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG)/Check { test: false }/TargetInner { name: "SVG", doc: true, ..: with_path("C:\\Users\\gjvid\\Documents\\GitHub\\ENSEA_TPs_Rust_MajeureInfo\\TP2\\SVG\\src\\main.rs", Edition2024) }
+   0.038058500s  INFO prepare_target{force=false package_id=SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG) target="SVG"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG\target\debug\.fingerprint\SVG-73dedd69797be92e\bin-SVG`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   0.054199500s  INFO prepare_target{force=false package_id=svg_fmt v0.4.5 target="svg_fmt"}: cargo::core::compiler::fingerprint: fingerprint error for svg_fmt v0.4.5/Check { test: false }/TargetInner { ..: lib_target("svg_fmt", ["lib"], "C:\\Users\\gjvid\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\svg_fmt-0.4.5\\src\\lib.rs", Edition2018) }
+   0.054517500s  INFO prepare_target{force=false package_id=svg_fmt v0.4.5 target="svg_fmt"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG\target\debug\.fingerprint\svg_fmt-af3ca66fad7e5952\lib-svg_fmt`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   0.055571000s  INFO prepare_target{force=false package_id=SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG) target="SVG"}: cargo::core::compiler::fingerprint: fingerprint error for SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG)/Check { test: true }/TargetInner { name: "SVG", doc: true, ..: with_path("C:\\Users\\gjvid\\Documents\\GitHub\\ENSEA_TPs_Rust_MajeureInfo\\TP2\\SVG\\src\\main.rs", Edition2024) }
+   0.055611600s  INFO prepare_target{force=false package_id=SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG) target="SVG"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG\target\debug\.fingerprint\SVG-77af669d86ea021e\test-bin-SVG`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+    Checking svg_fmt v0.4.5
+    Checking SVG v0.1.0 (C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP2\SVG)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.73s

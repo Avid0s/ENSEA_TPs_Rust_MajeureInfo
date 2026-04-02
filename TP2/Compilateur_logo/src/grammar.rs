@@ -62,9 +62,3 @@ pub fn eval(value: &AST) -> () {
         AST::Right => print!("Turning right "),
     }
 }
-
-pub struct Logo {
-    position: (f64, f64),
-    orientation: f64,
-    isWriting: bool,
-}
