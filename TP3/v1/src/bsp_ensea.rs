@@ -1,8 +1,10 @@
+use core::any::Any;
 use embassy_stm32::gpio::{Input, Level, Output, Pull, Pin, AnyPin};
-
+use embassy_stm32::Peri;
 
 pub struct Board{
     pub bargraph_pins: BargraphPins,
+    /*
     pub stepper_pins: StepperPins,
     pub gamepad: GamepadPins,
     pub spi2: Spi2Pins,
@@ -10,12 +12,18 @@ pub struct Board{
     pub gps_pin: GpsPin,
     pub i2c1_pins: I2c1Pins,
     pub magnetometer_pins: MagnetometerPins,
+
+     */
 }
 
 pub struct BargraphPins{
-    pub leds : [Output<'static>; 8],
+    pub leds : [Peri<'static, AnyPin>; 8],
+}
+
+pub struct Bargraph {
+    pub leds: [Output<'static>; 8],
     pub min_val: u8,
-    pub max_val: u8
+    pub max_val: u8,
 }
 
 

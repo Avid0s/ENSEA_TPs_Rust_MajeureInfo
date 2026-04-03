@@ -33,6 +33,7 @@ defmt = "1.0.1"
 defmt-rtt = "1.1.0"
 panic-probe = { version = "1.0.0", features = ["print-defmt"] }
 panic-halt = "1.0.0"
+embassy-hal-internal = "0.4.0"
 
 
 
