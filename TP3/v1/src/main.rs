@@ -22,11 +22,12 @@ async fn main(_spawner:Spawner) {
     bargraph.set_range(10, 90);
     bargraph.set_value(70); // Allume 6 LEDs
 
-    //let mut count :u8 = 1;
+    let mut count :u8 = 1;
     loop {
        Timer::after_millis(500).await;
-        //bargraph.set_value(count.0*10+1);
-        //count.0 +=1;
+        bargraph.set_value(count*10);
+        count = (count + 1) % 10;
+
 
 
     }
