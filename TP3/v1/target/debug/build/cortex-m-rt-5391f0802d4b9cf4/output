@@ -1,0 +1,8 @@
+cargo:rustc-check-cfg=cfg(armv6m)
+cargo:rustc-check-cfg=cfg(armv7m)
+cargo:rustc-check-cfg=cfg(armv8m)
+cargo:rustc-check-cfg=cfg(cortex_m)
+cargo:rustc-check-cfg=cfg(has_fpu)
+cargo:rustc-link-search=C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\debug\build\cortex-m-rt-5391f0802d4b9cf4\out
+cargo:rerun-if-changed=build.rs
+cargo:rerun-if-changed=link.x.in

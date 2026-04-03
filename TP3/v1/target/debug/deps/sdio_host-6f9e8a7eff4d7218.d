@@ -1,0 +1,11 @@
+C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\debug\deps\sdio_host-6f9e8a7eff4d7218.d: C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\lib.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc.rs
+
+C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\debug\deps\libsdio_host-6f9e8a7eff4d7218.rmeta: C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\lib.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc_cmd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc.rs
+
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\lib.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common_cmd.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd_cmd.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc_cmd.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\common.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\sd.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sdio-host-0.9.0\src\emmc.rs:
