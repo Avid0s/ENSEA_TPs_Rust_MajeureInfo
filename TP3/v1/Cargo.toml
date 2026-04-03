@@ -5,7 +5,7 @@ edition = "2024"
 
 [[bin]]
 name = "main"
-path = "src/bin/main.rs"
+path = "src/main.rs"
 
 
 [dependencies]
@@ -32,6 +32,8 @@ embassy-time = {version = "0.5.0", features = ["defmt",
 defmt = "1.0.1"
 defmt-rtt = "1.1.0"
 panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+panic-halt = "1.0.0"
+
 
 
 [lints.clippy]
