@@ -1,0 +1,9 @@
+C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\thumbv7em-none-eabihf\debug\deps\embedded_io_async-b316a572b5feede1.d: C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\lib.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\mod.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_mut.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_ref.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\../README.md
+
+C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\thumbv7em-none-eabihf\debug\deps\libembedded_io_async-b316a572b5feede1.rmeta: C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\lib.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\mod.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_mut.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_ref.rs C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\../README.md
+
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\lib.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\mod.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_mut.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\impls\slice_ref.rs:
+C:\Users\gjvid\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.7.0\src\../README.md:

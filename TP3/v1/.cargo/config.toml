@@ -1,0 +1,21 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = ["probe-rs", "run", "--chip", "STM32L476RG"]
+
+linker = "flip-link"
+
+rustflags = [ 
+    "-C", "link-arg=-Tlink.x", 
+    "-C", "link-arg=-Tdefmt.x" 
+    ]
+
+[build] 
+target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU) (STM32XY, Y = 4, 7)
+
+[env]
+DEFMT_LOG = "info"
+
+[alias]
+# `cargo rb foo` will expand to `cargo run --bin foo`
+rb = "run --bin"
+# `cargo rrb foo` will expand to `cargo run --release --bin foo`
+rrb = "run --release --bin"

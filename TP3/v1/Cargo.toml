@@ -1,8 +1,39 @@
 [package]
-name = "v1"
+name = "tp3"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "main"
+path = "src/bin/main.rs"
+
+
 [dependencies]
-embassy = "0.0.0"
-embassy-stm32 = "0.6.0"
+cortex-m = { version = "0.7.7", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7.5"
+embassy-stm32 = {version = "0.6.0", features =  [ 
+    "rt", # (enabled by default) —  Enable stm32-metapac’s rt feature
+    "stm32l476rg",      # Enable support for the STM32L476RG 
+    "time",             #  Enable the time driver
+    "time-driver-any",  # Use the "any" time driver as the default time driver
+    "dual-bank",        #  Enable support for dual-bank flash (STM32L4x2 and STM32L4x3)
+    "defmt",            # Use defmt for logging
+    "memory-x",         #  Automatically generate memory.x file based on the memory map from stm32-metapac
+    "unstable-pac",     #  Re-export stm32-metapac at embassy_stm32::pac.
+    ] }
+embassy-sync = {version = "0.8.0", features = ["defmt"] }
+embassy-executor = {version = "0.10.0", features = [
+    "platform-cortex-m", 
+    "executor-thread",
+    "defmt"] }
+embassy-time = {version = "0.5.0", features = ["defmt",
+    "defmt-timestamp-uptime", "tick-hz-32_768", ] }
+
+defmt = "1.0.1"
+defmt-rtt = "1.1.0"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+
+
+[lints.clippy]
+pedantic = "deny"
+arithmetic_side_effects = "deny"
