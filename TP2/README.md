@@ -5,7 +5,7 @@ Nous essayons de "construire" un compilateur Logo, un langage très simple.
 ## Partie I : 
 Nous essayons de fabriquer la grammaire du langage.\
 En voici un exemple :
-
+```
 <program> ::= <command> <program> | ""
 
 <command> ::= <block>
@@ -29,16 +29,18 @@ En voici un exemple :
            | <digit>
 
 <digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-
+```
 
 Nous pouvons ainsi décrire les actions nécessaires pour dessiner un carré.\
 cf suqare.txt\
 
 Pour simplifier, nous appliquerons cette grammaire : 
+```
 <program> ::= <command> <program> | ""
 <command> ::= <order> <number>
 <order> ::= "forward" | "backward" | "left" | "right"
 <number> ::= [0-9]+
+```
 
 ## Partie II : Analyse lexicale et syntaxique :
 
