@@ -20,3 +20,6 @@ Nous affichons correctement le polling des boutons, nous avons également utilis
 
 ### Encodeur
 Nous réussisons à faire fonctionner l'encodeur et à récuperer ses valeures. Pour le tester, nous l'utilisons pour controler le bargraph. tourner l'encodeur vers la droite allume de plus en plus de leds, et vers la gauche les éteint.
+
+### Stepper
+Nous avon réussi à faire fonctionner le stepper avec l'encodeur.
