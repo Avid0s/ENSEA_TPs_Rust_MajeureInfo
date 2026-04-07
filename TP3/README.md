@@ -1,4 +1,4 @@
-#Première séance :
+# Première séance :
 # TP3 RUST : Découverte de l'embarqué
 ## Partie I : BSP pour nucléo L476RG
 
@@ -15,5 +15,5 @@ Le temps est écoulé, nous n'avons pas pu aller plus loin.
 
 #Deuxième séance :
 ### Gamepad
-Nous affichons correctement le polling des boutons, nous avons également utilisé la fonction "is_pressed" pour activer et desactiver le bargraph avec le bouton central.
+Nous affichons correctement le polling des boutons, nous avons également utilisé la fonction "is_pressed" pour activer et desactiver le bargraph avec le bouton central.\
 <img width="358" height="88" alt="image" src="https://github.com/user-attachments/assets/2f5457f2-e3d8-43e0-8af9-5053320af7b0" />
