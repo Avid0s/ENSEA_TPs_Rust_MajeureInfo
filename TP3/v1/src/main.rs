@@ -11,7 +11,7 @@ use embassy_time::Timer;
 use {defmt_rtt as _, panic_probe as _};
 mod bsp_ensea;
 mod drivers;
-use crate::bsp_ensea::{Bargraph, Board, RotaryEncoder};
+use crate::bsp_ensea::{Bargraph, Board, RotaryEncoder, Stepper};
 use crate::drivers::bargraph::BargraphPins;
 
 #[embassy_executor::main]
@@ -21,7 +21,7 @@ async fn main(_spawner:Spawner) {
 
     // Création du bargraph
     let mut bargraph = Bargraph::new(board.bargraph_pins);
-    bargraph.set_range(0, 80);
+    bargraph.set_range(0, 255);
     bargraph.set_value(0); // Allume 0 LEDs
 
     let mut gamepad = crate::drivers::gamepad::Gamepad::new(board.gamepad_pins);
@@ -30,7 +30,9 @@ async fn main(_spawner:Spawner) {
     //Encoder
     let mut encoder = RotaryEncoder::new(board.rotary_encoder_pins);
     let mut position:Saturating<u32> = Saturating(0u32);
-    encoder.set_range(80);
+    encoder.set_range(255);
+
+    let mut stepper = Stepper::new(board.stepper_pins);
 
     loop {
         /*
@@ -55,6 +57,22 @@ async fn main(_spawner:Spawner) {
         //Button = reset
         if(encoder.enc_button.is_low()){
             encoder.reset();
+        }
+
+        // --- LECTURE ---
+        let pos = encoder.read_value();
+
+        // --- TRAITEMENT (Mapping) ---
+        // On transforme la position (ex: 0 à 100) en fréquence (ex: 0 à 1000 Hz)
+        // On sature à 2000 Hz pour ne pas faire siffler le moteur inutilement
+        let speed_hz = (pos * 10);
+
+        // --- ACTION ---
+        stepper.set_speed(speed_hz);
+
+        // Debug dans la console
+        if speed_hz > 0 {
+            defmt::info!("Vitesse moteur : {} Hz", speed_hz);
         }
 
         // Petite pause pour ne pas saturer la console

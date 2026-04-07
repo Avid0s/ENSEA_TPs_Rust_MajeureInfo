@@ -2,16 +2,18 @@ use core::any::Any;
 use embassy_stm32::gpio::{Input, Level, Output, Pull, Pin, AnyPin};
 use embassy_stm32::pac::timer::Tim2ch;
 use embassy_stm32::Peri;
-use embassy_stm32::peripherals::{PA0, PA1, PA2, TIM2};
+use embassy_stm32::peripherals::{PA0, PA1, PA2, PA6, TIM2, TIM3};
 use embassy_stm32::timer::qei::Qei;
 use embassy_stm32::timer::{Ch1, TimerPin};
+use embassy_stm32::timer::simple_pwm::{PwmPin, SimplePwm};
 
 pub struct Board{
     pub bargraph_pins: BargraphPins,
     pub gamepad_pins: GamepadPins,
     pub rotary_encoder_pins: RotaryEncoderPins,
-    /*
     pub stepper_pins: StepperPins,
+    /*
+
 
     pub spi2: Spi2Pins,
 
@@ -56,6 +58,14 @@ impl Board {
                 enc_button: p.PA15.into(),
                 timer: p.TIM2.into(),
             },
+            stepper_pins: StepperPins {
+                direction: p.PA7.into(),
+                microstep_ms1: p.PA11.into(),
+                microstep_ms2: p.PB12.into(),
+                enable_enn: p.PA12.into(),
+                step_stp: p.PA6.into(),
+                timer: p.TIM3.into(),
+            },
             /*
                 stepper_pins: StepperPins {
     
@@ -85,12 +95,20 @@ pub struct Bargraph {
 
 
 
-struct StepperPins{
-    pub direction: AnyPin,
-    pub microstep_ms1: AnyPin,
-    pub microstep_ms2: AnyPin,
-    pub enable_enn: AnyPin,
-    pub step_stp: AnyPin
+pub struct StepperPins{
+    pub direction: Peri<'static, AnyPin>,
+    pub microstep_ms1: Peri<'static, AnyPin>,
+    pub microstep_ms2: Peri<'static, AnyPin>,
+    pub enable_enn: Peri<'static, AnyPin>,
+    pub step_stp: Peri<'static, PA6>,
+    pub timer: Peri<'static, TIM3>,
+}
+pub struct Stepper{
+    pub direction: Output<'static>,
+    pub microstep_ms1: Output<'static>,
+    pub microstep_ms2: Output<'static>,
+    pub enable_enn: Output<'static>,
+    pub step_stp: SimplePwm<'static, embassy_stm32::peripherals::TIM3>,
 }
 
 
