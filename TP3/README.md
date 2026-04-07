@@ -17,3 +17,6 @@ Le temps est écoulé, nous n'avons pas pu aller plus loin.
 ### Gamepad
 Nous affichons correctement le polling des boutons, nous avons également utilisé la fonction "is_pressed" pour activer et desactiver le bargraph avec le bouton central.\
 <img width="358" height="88" alt="image" src="https://github.com/user-attachments/assets/2f5457f2-e3d8-43e0-8af9-5053320af7b0" />
+
+### Encodeur
+Nous réussisons à faire fonctionner l'encodeur et à récuperer ses valeures. Pour le tester, nous l'utilisons pour controler le bargraph. tourner l'encodeur vers la droite allume de plus en plus de leds, et vers la gauche les éteint.
