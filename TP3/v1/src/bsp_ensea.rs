@@ -2,8 +2,9 @@ use core::any::Any;
 use embassy_stm32::gpio::{Input, Level, Output, Pull, Pin, AnyPin};
 use embassy_stm32::pac::timer::Tim2ch;
 use embassy_stm32::Peri;
-use embassy_stm32::peripherals::TIM2;
+use embassy_stm32::peripherals::{PA0, PA1, PA2, TIM2};
 use embassy_stm32::timer::qei::Qei;
+use embassy_stm32::timer::{Ch1, TimerPin};
 
 pub struct Board{
     pub bargraph_pins: BargraphPins,
@@ -50,9 +51,10 @@ impl Board {
                 bp_center:  p.PC5.into(),
             },
             rotary_encoder_pins: RotaryEncoderPins {
-                enc_a: p.PA0.into(),
-                enc_b: p.PA1.into(),
+                enc_a: p.PA0,
+                enc_b: p.PA1,
                 enc_button: p.PA15.into(),
+                timer: p.TIM2.into(),
             },
             /*
                 stepper_pins: StepperPins {
@@ -136,9 +138,10 @@ struct Spi2Pins{
 }
 
 pub struct RotaryEncoderPins{
-    pub enc_a:     Peri<'static, AnyPin>,
-    pub enc_b:      Peri<'static, AnyPin>,
+    pub enc_a:     Peri<'static, PA0>,
+    pub enc_b:      Peri<'static, PA1>,
     pub enc_button:  Peri<'static, AnyPin>,
+    pub timer: Peri<'static, TIM2>,
 }
 pub struct RotaryEncoder{
     pub enc_button:      Input<'static>,

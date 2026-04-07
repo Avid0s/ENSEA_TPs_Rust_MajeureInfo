@@ -1,15 +1,17 @@
 #![no_main]
 #![no_std]
 
+use embassy_stm32::peripherals::TIM2;
 use core::num::Wrapping;
 use defmt::info;
 use embassy_executor::Spawner;
 use embassy_stm32;
+use embassy_stm32::pac::TIM2;
 use embassy_time::Timer;
 use {defmt_rtt as _, panic_probe as _};
 mod bsp_ensea;
 mod drivers;
-use crate::bsp_ensea::{Bargraph, Board};
+use crate::bsp_ensea::{Bargraph, Board, RotaryEncoder};
 use crate::drivers::bargraph::BargraphPins;
 
 #[embassy_executor::main]
@@ -19,22 +21,38 @@ async fn main(_spawner:Spawner) {
 
     // Création du bargraph
     let mut bargraph = Bargraph::new(board.bargraph_pins);
-    bargraph.set_range(10, 90);
-    bargraph.set_value(10); // Allume 0 LEDs
+    bargraph.set_range(0, 80);
+    bargraph.set_value(0); // Allume 0 LEDs
 
     let mut gamepad = crate::drivers::gamepad::Gamepad::new(board.gamepad_pins);
-
     let mut count :u8 = 1;
+
+    //Encoder
+    let mut encoder = RotaryEncoder::new(board.rotary_encoder_pins);
+    let mut position:Wrapping<u32> = Wrapping(0u32);
+    encoder.set_range(255);
+
     loop {
+        /*
         if(gamepad.is_pressed(crate::drivers::gamepad::Button::Center)){
             
             bargraph.set_value(count*10);
             count = (count + 1) % 10;
         }
+        */
 
         let gamepad_state = gamepad.poll();
         info!("Gamepad state:\n up={}\n left={}, center={}, right={},\n down={},", 
-            gamepad_state.up, gamepad_state.down, gamepad_state.left, gamepad_state.right, gamepad_state.center);
+            gamepad_state.up, gamepad_state.left, gamepad_state.center, gamepad_state.right,  gamepad_state.down);
+
+        // test Encoder :
+        position = Wrapping(encoder.read_value());
+
+        // Affichage dans la console de débug
+        defmt::info!("Position de l'encodeur : {}", position.0);
+        bargraph.set_value(position.0 as u8);
+
+        // Petite pause pour ne pas saturer la console
         Timer::after_millis(250).await;
     }
 }
