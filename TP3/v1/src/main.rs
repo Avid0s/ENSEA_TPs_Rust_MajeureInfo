@@ -2,7 +2,7 @@
 #![no_std]
 
 use embassy_stm32::peripherals::TIM2;
-use core::num::Wrapping;
+use core::num::{Saturating, Wrapping};
 use defmt::info;
 use embassy_executor::Spawner;
 use embassy_stm32;
@@ -29,8 +29,8 @@ async fn main(_spawner:Spawner) {
 
     //Encoder
     let mut encoder = RotaryEncoder::new(board.rotary_encoder_pins);
-    let mut position:Wrapping<u32> = Wrapping(0u32);
-    encoder.set_range(255);
+    let mut position:Saturating<u32> = Saturating(0u32);
+    encoder.set_range(80);
 
     loop {
         /*
@@ -46,11 +46,16 @@ async fn main(_spawner:Spawner) {
             gamepad_state.up, gamepad_state.left, gamepad_state.center, gamepad_state.right,  gamepad_state.down);
 
         // test Encoder :
-        position = Wrapping(encoder.read_value());
+        position = Saturating(encoder.read_value());
 
         // Affichage dans la console de débug
         defmt::info!("Position de l'encodeur : {}", position.0);
         bargraph.set_value(position.0 as u8);
+
+        //Button = reset
+        if(encoder.enc_button.is_low()){
+            encoder.reset();
+        }
 
         // Petite pause pour ne pas saturer la console
         Timer::after_millis(250).await;

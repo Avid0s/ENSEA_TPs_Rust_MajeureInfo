@@ -33,6 +33,15 @@ impl RotaryEncoder {
         regs.arr().write_value(max_value); // Définit la valeur max
         regs.cnt().write_value(0);         // Remet à zéro
     }
+    
+    pub fn set_position(&self, position: u32) {
+        let regs = pac::TIM2;
+        regs.cnt().write_value(position);
+        
+    }
+    pub fn reset(&self) {
+        pac::TIM2.cnt().write_value(0);
+    }
 
 
 
