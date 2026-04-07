@@ -4,9 +4,10 @@ use embassy_stm32::Peri;
 
 pub struct Board{
     pub bargraph_pins: BargraphPins,
+    pub gamepad: GamepadPins,
     /*
     pub stepper_pins: StepperPins,
-    pub gamepad: GamepadPins,
+
     pub spi2: Spi2Pins,
     pub rotary_encoder_pins: RotaryEncoderPins,
     pub gps_pin: GpsPin,
@@ -14,6 +15,50 @@ pub struct Board{
     pub magnetometer_pins: MagnetometerPins,
 
      */
+}
+
+//Configuration des pins : 
+
+impl Board {
+    pub fn new() -> Self {
+        // Initialisation de la carte
+        let p: embassy_stm32::Peripherals = embassy_stm32::init(embassy_stm32::Config::default());
+
+        Self {
+            bargraph_pins: BargraphPins {
+                leds: [
+                    p.PC7.into(),
+                    p.PB2.into(),
+                    p.PA8.into(),
+                    p.PB1.into(),
+                    p.PB15.into(),
+                    p.PB4.into(),
+                    p.PB14.into(),
+                    p.PB5.into(),
+                ],
+
+            },
+            gamepad: GamepadPins {
+
+                bp_top:     p.PC8.into(),
+                bp_right:   p.PC9.into(),
+                bp_bottom:  p.PB11.into(),
+                bp_left:    p.PC6.into(),
+                bp_center:  p.PC5.into(),
+            }
+            /*
+                stepper_pins: StepperPins {
+    
+                },
+                
+                spi2: Spi2Pins {},
+                rotary_encoder_pins: RotaryEncoderPins {},
+                gps_pin: GpsPin {},
+                i2c1_pins: I2c1Pins {},
+                magnetometer_pins: MagnetometerPins {},
+                */
+        }
+    }
 }
 
 pub struct BargraphPins{
@@ -38,12 +83,41 @@ struct StepperPins{
     pub step_stp: AnyPin
 }
 
-struct GamepadPins{
+
+
+pub(crate) struct GamepadPins{
+    pub bp_top:     Peri<'static, AnyPin>,
+    pub bp_right:   Peri<'static, AnyPin>,
+    pub bp_bottom:  Peri<'static, AnyPin>,
+    pub bp_left:    Peri<'static, AnyPin>,
+    pub bp_center:  Peri<'static, AnyPin>,
+}
+
+//GAMEPAD :
+pub enum Button {
+    Up,
+    Down,
+    Left,
+    Right,
+    Center,
+}
+
+pub struct GamepadState {
+    pub up: bool,
+    pub down: bool,
+    pub left: bool,
+    pub right: bool,
+    pub center: bool,
+}
+pub(crate) struct Gamepad {
     pub bp_top:     Input<'static>,
     pub bp_right:   Input<'static>,
     pub bp_bottom:  Input<'static>,
     pub bp_left:    Input<'static>,
     pub bp_center:  Input<'static>,
+    
+    
+    
 }
 
 struct Spi2Pins{
