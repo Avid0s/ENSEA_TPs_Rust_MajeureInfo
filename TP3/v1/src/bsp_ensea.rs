@@ -4,7 +4,7 @@ use embassy_stm32::Peri;
 
 pub struct Board{
     pub bargraph_pins: BargraphPins,
-    pub gamepad: GamepadPins,
+    pub gamepad_pins: GamepadPins,
     /*
     pub stepper_pins: StepperPins,
 
@@ -38,8 +38,7 @@ impl Board {
                 ],
 
             },
-            gamepad: GamepadPins {
-
+            gamepad_pins: GamepadPins {
                 bp_top:     p.PC8.into(),
                 bp_right:   p.PC9.into(),
                 bp_bottom:  p.PB11.into(),
@@ -109,7 +108,7 @@ pub struct GamepadState {
     pub right: bool,
     pub center: bool,
 }
-pub(crate) struct Gamepad {
+pub struct Gamepad {
     pub bp_top:     Input<'static>,
     pub bp_right:   Input<'static>,
     pub bp_bottom:  Input<'static>,

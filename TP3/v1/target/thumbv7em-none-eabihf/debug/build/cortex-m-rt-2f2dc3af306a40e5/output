@@ -6,6 +6,6 @@ cargo:rustc-check-cfg=cfg(has_fpu)
 cargo:rustc-cfg=cortex_m
 cargo:rustc-cfg=armv7m
 cargo:rustc-cfg=has_fpu
-cargo:rustc-link-search=C:\Users\mathe\Desktop\2526_2A\°S8\RUST\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\thumbv7em-none-eabihf\debug\build\cortex-m-rt-2f2dc3af306a40e5\out
+cargo:rustc-link-search=C:\Users\gjvid\Documents\GitHub\ENSEA_TPs_Rust_MajeureInfo\TP3\v1\target\thumbv7em-none-eabihf\debug\build\cortex-m-rt-2f2dc3af306a40e5\out
 cargo:rerun-if-changed=build.rs
 cargo:rerun-if-changed=link.x.in

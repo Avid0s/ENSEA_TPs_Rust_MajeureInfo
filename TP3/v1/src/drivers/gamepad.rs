@@ -29,20 +29,24 @@ impl Gamepad {
     }
     pub fn is_pressed(&self, button:Button) -> bool {
         match button {
-            Button::Up=> self.bp_top.is_high(),
-            Button::Down=> self.bp_bottom.is_high(),
-            Button::Left=> self.bp_left.is_high(),
-            Button::Right=> self.bp_right.is_high(),
-            Button::Center=> self.bp_center.is_high(),
+            Button::Up=> self.bp_top.is_low(),
+            Button::Down=> self.bp_bottom.is_low(),
+            Button::Left=> self.bp_left.is_low(),
+            Button::Right=> self.bp_right.is_low(),
+            Button::Center=> self.bp_center.is_low(),
         }
     }
 
     pub fn poll(&mut self)->GamepadState {
-        let status:GamepadState = {
-            self.bp_top.is_high(),
-            self.bp_bottom
-        }
+        let status:GamepadState = GamepadState{
+            up: self.bp_top.is_low(),
+            down: self.bp_bottom.is_low(),
+            left: self.bp_left.is_low(),
+            right: self.bp_right.is_low(),
+            center: self.bp_center.is_low(),
+        };
 
+        status
     }
 
 

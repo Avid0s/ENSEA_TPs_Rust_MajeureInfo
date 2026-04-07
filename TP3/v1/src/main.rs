@@ -20,16 +20,22 @@ async fn main(_spawner:Spawner) {
     // Création du bargraph
     let mut bargraph = Bargraph::new(board.bargraph_pins);
     bargraph.set_range(10, 90);
-    bargraph.set_value(70); // Allume 6 LEDs
+    bargraph.set_value(10); // Allume 0 LEDs
+
+    let mut gamepad = crate::drivers::gamepad::Gamepad::new(board.gamepad_pins);
 
     let mut count :u8 = 1;
     loop {
-       Timer::after_millis(500).await;
-        bargraph.set_value(count*10);
-        count = (count + 1) % 10;
+        if(gamepad.is_pressed(crate::drivers::gamepad::Button::Center)){
+            
+            bargraph.set_value(count*10);
+            count = (count + 1) % 10;
+        }
 
-
-
+        let gamepad_state = gamepad.poll();
+        info!("Gamepad state:\n up={}\n left={}, center={}, right={},\n down={},", 
+            gamepad_state.up, gamepad_state.down, gamepad_state.left, gamepad_state.right, gamepad_state.center);
+        Timer::after_millis(250).await;
     }
 }
 

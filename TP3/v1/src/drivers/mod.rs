@@ -1,2 +1,2 @@
 pub mod bargraph;
-mod gamepad;
+pub mod gamepad;
