@@ -11,7 +11,8 @@ use embassy_time::Timer;
 use {defmt_rtt as _, panic_probe as _};
 mod bsp_ensea;
 mod drivers;
-use crate::bsp_ensea::{Bargraph, Board, RotaryEncoder, Stepper};
+use crate::bsp_ensea::{Bargraph, Board, Button, RotaryEncoder, Stepper};
+use crate::bsp_ensea::StepperDirection::{Clockwise, CounterClockwise};
 use crate::drivers::bargraph::BargraphPins;
 
 #[embassy_executor::main]
@@ -65,20 +66,34 @@ async fn main(_spawner: Spawner) {
             encoder.reset();
         }
 
-        // --- LECTURE ---
-        let pos = encoder.read_value();
 
-        // --- TRAITEMENT (Mapping) ---
         // On transforme la position (ex: 0 à 100) en fréquence (ex: 0 à 1000 Hz)
         // On sature à 2000 Hz pour ne pas faire siffler le moteur inutilement
-        let speed_hz = (pos * 10);
+        let speed_pas = (encoder.read_value() * 10).min(2000);
 
         // --- ACTION ---
-        stepper.set_speed(speed_hz, encoder.encoder_qei.read_direction());
+        let dir_choice = stepper.dir_choice;
+        stepper.set_speed(speed_pas, dir_choice);
+        if(gamepad.is_pressed(Button::Left)){
+            stepper.set_speed(speed_pas, Clockwise);
+        }
+        if (gamepad.is_pressed(Button::Right)){
+            stepper.set_speed(speed_pas, CounterClockwise);
+        }
+        if (gamepad.is_pressed(Button::Down)){
+            let new_mode = stepper.microstep_mode.previous();
+            stepper.set_microstepping(new_mode);
+        }
+        if (gamepad.is_pressed(Button::Up)){
+            let new_mode = stepper.microstep_mode.next();
+            stepper.set_microstepping(new_mode);
+        }
+
+
 
         // Debug dans la console
-        if speed_hz > 0 {
-            defmt::info!("Vitesse moteur : {} Hz", speed_hz);
+        if speed_pas > 0 {
+            defmt::info!("Vitesse moteur : {} pas par tour.\n, Dir : {}\n, MS : {}", speed_pas, stepper.dir_choice, stepper.microstep_mode);
         }
 
         // Petite pause pour ne pas saturer la console

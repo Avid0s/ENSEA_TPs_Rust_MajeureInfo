@@ -14,6 +14,7 @@ use embassy_stm32::timer::simple_pwm::{PwmPin, SimplePwm};
 use embassy_stm32::{Config, Peri, Peripherals, pac};
 
 pub(crate) use crate::bsp_ensea::*;
+use crate::bsp_ensea::StepperDirection::Clockwise;
 use crate::drivers::stepper::MicrosteppingMode::EighthStep;
 
 impl Stepper {
@@ -33,6 +34,7 @@ impl Stepper {
         let microstep_ms2 = Output::new(stepper_pins.microstep_ms2, Level::Low, Speed::Low);
         let enable_enn = Output::new(stepper_pins.enable_enn, Level::Low, Speed::Low);
         let microstep_mode = EighthStep;
+        let dir_choice = Clockwise;
 
         Self {
             direction,
@@ -41,6 +43,7 @@ impl Stepper {
             enable_enn,
             step_stp,
             microstep_mode,
+            dir_choice,
         }
     }
     ///Based on datasheet TMC2226 |MS2, MS1: 00: 1/8, 01: 1/32, 10: 1/64 11: 1/16
@@ -66,10 +69,10 @@ impl Stepper {
         self.microstep_mode = mode;
     }
 
-    pub fn set_speed(&mut self, speed: u32, direction: Direction) {
+    pub fn set_speed(&mut self, speed: u32, direction: StepperDirection) {
         match direction {
-            Direction::Upcounting => self.direction.set_high(),
-            Direction::Downcounting => self.direction.set_low(),
+            StepperDirection::Clockwise => {self.direction.set_high(); self.dir_choice = direction;},
+            StepperDirection::CounterClockwise => {self.direction.set_low(); self.dir_choice = direction;},
         };
 
         if speed == 0 {

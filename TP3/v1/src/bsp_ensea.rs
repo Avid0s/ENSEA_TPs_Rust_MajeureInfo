@@ -1,4 +1,5 @@
 use core::any::Any;
+use defmt::Format;
 use embassy_stm32::Peri;
 use embassy_stm32::gpio::{AnyPin, Input, Level, Output, Pin, Pull};
 use embassy_stm32::pac::timer::Tim2ch;
@@ -105,8 +106,9 @@ pub struct Stepper {
     pub enable_enn: Output<'static>,
     pub step_stp: SimplePwm<'static, embassy_stm32::peripherals::TIM3>,
     pub microstep_mode: MicrosteppingMode,
+    pub dir_choice: StepperDirection,
 }
-
+#[derive(Debug, Clone, Copy, Format)]
 pub enum MicrosteppingMode {
     EighthStep,
     SixteenthStep,
@@ -114,6 +116,26 @@ pub enum MicrosteppingMode {
     SixtyFourStep,
 }
 
+impl MicrosteppingMode {
+    pub fn next(self) -> Self {
+        match self {
+            MicrosteppingMode::EighthStep => MicrosteppingMode::SixteenthStep,
+            MicrosteppingMode::SixteenthStep => MicrosteppingMode::ThirtyTwoStep,
+            MicrosteppingMode::ThirtyTwoStep => MicrosteppingMode::SixtyFourStep,
+            MicrosteppingMode::SixtyFourStep => MicrosteppingMode::EighthStep, // Boucle
+        }
+    }
+    pub fn previous(self) -> Self {
+        match self {
+            MicrosteppingMode::EighthStep => MicrosteppingMode::SixtyFourStep,
+            MicrosteppingMode::SixteenthStep => MicrosteppingMode::ThirtyTwoStep,
+            MicrosteppingMode::ThirtyTwoStep => MicrosteppingMode::SixteenthStep,
+            MicrosteppingMode::SixtyFourStep => MicrosteppingMode::ThirtyTwoStep, // Boucle
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, Format)]
 pub enum StepperDirection {
     Clockwise,
     CounterClockwise,
