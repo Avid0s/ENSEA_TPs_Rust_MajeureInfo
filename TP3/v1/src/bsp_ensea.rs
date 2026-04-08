@@ -1,13 +1,13 @@
 use core::any::Any;
-use embassy_stm32::gpio::{Input, Level, Output, Pull, Pin, AnyPin};
-use embassy_stm32::pac::timer::Tim2ch;
 use embassy_stm32::Peri;
+use embassy_stm32::gpio::{AnyPin, Input, Level, Output, Pin, Pull};
+use embassy_stm32::pac::timer::Tim2ch;
 use embassy_stm32::peripherals::{PA0, PA1, PA2, PA6, TIM2, TIM3};
 use embassy_stm32::timer::qei::Qei;
-use embassy_stm32::timer::{Ch1, TimerPin};
 use embassy_stm32::timer::simple_pwm::{PwmPin, SimplePwm};
+use embassy_stm32::timer::{Ch1, TimerPin};
 
-pub struct Board{
+pub struct Board {
     pub bargraph_pins: BargraphPins,
     pub gamepad_pins: GamepadPins,
     pub rotary_encoder_pins: RotaryEncoderPins,
@@ -24,7 +24,7 @@ pub struct Board{
      */
 }
 
-//Configuration des pins : 
+//Configuration des pins :
 
 impl Board {
     pub fn new() -> Self {
@@ -43,14 +43,13 @@ impl Board {
                     p.PB14.into(),
                     p.PB5.into(),
                 ],
-
             },
             gamepad_pins: GamepadPins {
-                bp_top:     p.PC8.into(),
-                bp_right:   p.PC9.into(),
-                bp_bottom:  p.PB11.into(),
-                bp_left:    p.PC6.into(),
-                bp_center:  p.PC5.into(),
+                bp_top: p.PC8.into(),
+                bp_right: p.PC9.into(),
+                bp_bottom: p.PB11.into(),
+                bp_left: p.PC6.into(),
+                bp_center: p.PC5.into(),
             },
             rotary_encoder_pins: RotaryEncoderPins {
                 enc_a: p.PA0,
@@ -67,22 +66,22 @@ impl Board {
                 timer: p.TIM3.into(),
             },
             /*
-                stepper_pins: StepperPins {
-    
-                },
-                
-                spi2: Spi2Pins {},
+            stepper_pins: StepperPins {
 
-                gps_pin: GpsPin {},
-                i2c1_pins: I2c1Pins {},
-                magnetometer_pins: MagnetometerPins {},
-                */
+            },
+
+            spi2: Spi2Pins {},
+
+            gps_pin: GpsPin {},
+            i2c1_pins: I2c1Pins {},
+            magnetometer_pins: MagnetometerPins {},
+            */
         }
     }
 }
 
-pub struct BargraphPins{
-    pub leds : [Peri<'static, AnyPin>; 8],
+pub struct BargraphPins {
+    pub leds: [Peri<'static, AnyPin>; 8],
 }
 
 pub struct Bargraph {
@@ -91,11 +90,7 @@ pub struct Bargraph {
     pub max_val: u8,
 }
 
-
-
-
-
-pub struct StepperPins{
+pub struct StepperPins {
     pub direction: Peri<'static, AnyPin>,
     pub microstep_ms1: Peri<'static, AnyPin>,
     pub microstep_ms2: Peri<'static, AnyPin>,
@@ -103,22 +98,33 @@ pub struct StepperPins{
     pub step_stp: Peri<'static, PA6>,
     pub timer: Peri<'static, TIM3>,
 }
-pub struct Stepper{
+pub struct Stepper {
     pub direction: Output<'static>,
     pub microstep_ms1: Output<'static>,
     pub microstep_ms2: Output<'static>,
     pub enable_enn: Output<'static>,
     pub step_stp: SimplePwm<'static, embassy_stm32::peripherals::TIM3>,
+    pub microstep_mode: MicrosteppingMode,
 }
 
+pub enum MicrosteppingMode {
+    EighthStep,
+    SixteenthStep,
+    ThirtyTwoStep,
+    SixtyFourStep,
+}
 
+pub enum StepperDirection {
+    Clockwise,
+    CounterClockwise,
+}
 
-pub(crate) struct GamepadPins{
-    pub bp_top:     Peri<'static, AnyPin>,
-    pub bp_right:   Peri<'static, AnyPin>,
-    pub bp_bottom:  Peri<'static, AnyPin>,
-    pub bp_left:    Peri<'static, AnyPin>,
-    pub bp_center:  Peri<'static, AnyPin>,
+pub(crate) struct GamepadPins {
+    pub bp_top: Peri<'static, AnyPin>,
+    pub bp_right: Peri<'static, AnyPin>,
+    pub bp_bottom: Peri<'static, AnyPin>,
+    pub bp_left: Peri<'static, AnyPin>,
+    pub bp_center: Peri<'static, AnyPin>,
 }
 
 //GAMEPAD :
@@ -138,44 +144,41 @@ pub struct GamepadState {
     pub center: bool,
 }
 pub struct Gamepad {
-    pub bp_top:     Input<'static>,
-    pub bp_right:   Input<'static>,
-    pub bp_bottom:  Input<'static>,
-    pub bp_left:    Input<'static>,
-    pub bp_center:  Input<'static>,
-    
-    
-    
+    pub bp_top: Input<'static>,
+    pub bp_right: Input<'static>,
+    pub bp_bottom: Input<'static>,
+    pub bp_left: Input<'static>,
+    pub bp_center: Input<'static>,
 }
 
-struct Spi2Pins{
-    pub sck:  AnyPin,
+struct Spi2Pins {
+    pub sck: AnyPin,
     pub miso: AnyPin,
     pub mosi: AnyPin,
-    pub cs:   AnyPin
+    pub cs: AnyPin,
 }
 
-pub struct RotaryEncoderPins{
-    pub enc_a:     Peri<'static, PA0>,
-    pub enc_b:      Peri<'static, PA1>,
-    pub enc_button:  Peri<'static, AnyPin>,
+pub struct RotaryEncoderPins {
+    pub enc_a: Peri<'static, PA0>,
+    pub enc_b: Peri<'static, PA1>,
+    pub enc_button: Peri<'static, AnyPin>,
     pub timer: Peri<'static, TIM2>,
 }
-pub struct RotaryEncoder{
-    pub enc_button:      Input<'static>,
+pub struct RotaryEncoder {
+    pub enc_button: Input<'static>,
     pub encoder_qei: Qei<'static, embassy_stm32::peripherals::TIM2>,
 }
 
-struct GpsPin{
-    pub gps_enn: AnyPin
+struct GpsPin {
+    pub gps_enn: AnyPin,
 }
 
-struct I2c1Pins{
+struct I2c1Pins {
     pub sda: AnyPin,
-    pub scl: AnyPin
+    pub scl: AnyPin,
 }
 
-struct MagnetometerPins{
+struct MagnetometerPins {
     pub drdy: Input<'static>,
-    pub int2: Input<'static>
+    pub int2: Input<'static>,
 }

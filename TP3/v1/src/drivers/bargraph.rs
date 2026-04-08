@@ -1,16 +1,17 @@
+use embassy_stm32::Peripherals;
 use embassy_stm32::gpio::Pin;
 use embassy_stm32::gpio::{AnyPin, Level, Output, Speed};
-use embassy_stm32::Peripherals;
 
 use crate::bsp_ensea;
 
 pub(crate) use crate::bsp_ensea::BargraphPins;
 pub(crate) use crate::bsp_ensea::*;
 
-
 impl Bargraph {
     pub fn new(pins: BargraphPins) -> Self {
-        let leds = pins.leds.map(|pin| {Output::new(pin, Level::Low, Speed::Low )});
+        let leds = pins
+            .leds
+            .map(|pin| Output::new(pin, Level::Low, Speed::Low));
 
         Self {
             leds,
@@ -18,7 +19,6 @@ impl Bargraph {
             max_val: 100,
         }
     }
-
 
     pub fn set_range(&mut self, min: u8, max: u8) {
         // Implémentation pour définir la plage de valeurs
@@ -41,4 +41,3 @@ impl Bargraph {
         }
     }
 }
-
